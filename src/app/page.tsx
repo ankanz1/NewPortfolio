@@ -67,7 +67,7 @@ export default function Page() {
       </section>
 
       <footer className="py-12 text-center text-zinc-600 text-xs border-t border-zinc-900">
-        © {new Date().getFullYear()} Xevrion. Built with Next.js & Framer Motion.
+        © {new Date().getFullYear()} Ankan. Built with Next.js & Framer Motion.
       </footer>
 
       <Dock />

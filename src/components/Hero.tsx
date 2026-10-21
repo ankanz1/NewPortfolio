@@ -15,7 +15,7 @@ export default function Hero() {
       >
         <div className="space-y-2">
           <h1 className="text-6xl md:text-8xl font-bold tracking-tighter">
-            Xevrion
+            Ankan
           </h1>
           <p className="text-xl md:text-2xl text-zinc-400 font-medium">
             Developer Relations Engineer
