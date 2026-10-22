@@ -15,19 +15,19 @@ export default function Guestbook() {
 
   return (
     <div className="space-y-8">
-      <div className="p-8 rounded-3xl bg-zinc-900 border border-zinc-800">
-        <h3 className="text-xl font-semibold mb-6">Leave a note</h3>
+      <div className="p-8 rounded-3xl bg-foreground/[0.02] border border-foreground/10">
+        <h3 className="text-xl font-semibold mb-6 text-foreground">Leave a note</h3>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input 
               type="text" 
               placeholder="Your name" 
-              className="px-4 py-3 rounded-xl bg-zinc-800 border border-zinc-700 focus:outline-none focus:border-white transition-colors text-sm"
+              className="px-4 py-3 rounded-xl bg-foreground/[0.03] border border-foreground/10 focus:outline-none focus:border-foreground transition-colors text-sm text-foreground placeholder:text-muted"
             />
             <input 
               type="email" 
               placeholder="Your email" 
-              className="px-4 py-3 rounded-xl bg-zinc-800 border border-zinc-700 focus:outline-none focus:border-white transition-colors text-sm"
+              className="px-4 py-3 rounded-xl bg-foreground/[0.03] border border-foreground/10 focus:outline-none focus:border-foreground transition-colors text-sm text-foreground placeholder:text-muted"
             />
           </div>
           <textarea 
@@ -35,11 +35,11 @@ export default function Guestbook() {
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Your message..." 
             rows={4}
-            className="w-full px-4 py-3 rounded-xl bg-zinc-800 border border-zinc-700 focus:outline-none focus:border-white transition-colors text-sm"
+            className="w-full px-4 py-3 rounded-xl bg-foreground/[0.03] border border-foreground/10 focus:outline-none focus:border-foreground transition-colors text-sm text-foreground placeholder:text-muted"
           />
           <button 
             type="submit"
-            className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-zinc-200 transition-colors text-sm"
+            className="flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-full font-semibold hover:opacity-90 transition-colors text-sm"
           >
             <Send className="w-4 h-4" />
             Send Message
@@ -49,9 +49,9 @@ export default function Guestbook() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {['Amazing work!', 'Love the design!', 'Can we collaborate?', 'Great portfolio!'].map((msg, i) => (
-          <div key={i} className="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800">
-            <p className="text-sm text-zinc-300">"{msg}"</p>
-            <p className="text-xs text-zinc-500 mt-2">— Guest {i + 1}</p>
+          <div key={i} className="p-4 rounded-2xl bg-foreground/[0.01] border border-foreground/10">
+            <p className="text-sm text-muted">"{msg}"</p>
+            <p className="text-xs text-muted/60 mt-2">— Guest {i + 1}</p>
           </div>
         ))}
       </div>

@@ -24,13 +24,13 @@ export default function Friends() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: idx * 0.05 }}
-          className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-zinc-600 transition-all flex items-center justify-between group"
+          className="p-4 rounded-2xl bg-foreground/[0.02] border border-foreground/10 hover:border-foreground/30 transition-all flex items-center justify-between group"
         >
           <div>
-            <h4 className="text-sm font-medium">{friend.name}</h4>
-            <p className="text-xs text-zinc-500">{friend.role}</p>
+            <h4 className="text-sm font-medium text-foreground">{friend.name}</h4>
+            <p className="text-xs text-muted">{friend.role}</p>
           </div>
-          <ExternalLink className="w-4 h-4 text-zinc-600 group-hover:text-white transition-colors" />
+          <ExternalLink className="w-4 h-4 text-muted group-hover:text-foreground transition-colors" />
         </motion.a>
       ))}
     </div>

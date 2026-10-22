@@ -2,33 +2,39 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Star, Zap } from 'lucide-react';
+import { Trophy, Star, Zap, Camera } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const ACHIEVEMENTS = [
   {
-    title: "1,000 GitHub stars in six days",
-    description: "Rapid growth for a system design tool during a launch week.",
+    title: "Hack4Bengal 4.0",
+    description: "Collaborative product development and rapid prototyping in high-pressure environments.",
+    icon: Zap,
+    color: "text-blue-500"
+  },
+  {
+    title: "Aperture Alchemist",
+    description: "Coordinator/Secretary of the University Photography Club, merging visual arts with leadership.",
+    icon: Camera,
+    color: "text-purple-500"
+  },
+  {
+    title: "Creative Engineering",
+    description: "Combining AI, 3D graphics (Three.js), and interactive design to build useful digital products.",
     icon: Star,
     color: "text-yellow-500"
   },
   {
-    title: "Featured on Hacker News",
-    description: "Reached the front page with a high-scale architecture simulator.",
+    title: "Google Solution Challenge",
+    description: "Developing technology-based solutions to solve meaningful real-world problems.",
     icon: Trophy,
     color: "text-orange-500"
   },
-  {
-    title: "Open Source Contributor",
-    description: "Significant contributions to Deno, Nuxt, and other core web tools.",
-    icon: Zap,
-    color: "text-blue-500"
-  }
 ];
 
 export default function AchievementList() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {ACHIEVEMENTS.map((item, idx) => (
         <motion.div 
           key={idx}
@@ -36,11 +42,11 @@ export default function AchievementList() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: idx * 0.1 }}
-          className="p-6 rounded-3xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors"
+          className="p-6 rounded-3xl bg-foreground/[0.02] border border-foreground/10 hover:border-foreground/20 transition-colors"
         >
           <item.icon className={cn("w-8 h-8 mb-4", item.color)} />
-          <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-          <p className="text-zinc-400 text-sm leading-relaxed">{item.description}</p>
+          <h3 className="text-lg font-semibold mb-2 text-foreground">{item.title}</h3>
+          <p className="text-muted text-sm leading-relaxed">{item.description}</p>
         </motion.div>
       ))}
     </div>

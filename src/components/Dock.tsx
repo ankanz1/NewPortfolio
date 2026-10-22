@@ -20,57 +20,56 @@ export default function Dock() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
       <motion.div 
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-        className="relative"
+        className="relative flex flex-col items-center"
       >
-        {/* Trigger Button */}
-        <motion.button
-          onClick={() => setIsOpen(!isOpen)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className={cn(
-            "px-6 py-3 rounded-full bg-white text-black font-medium text-sm transition-all duration-300 shadow-lg",
-            isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+        {/* Trigger Button - "Press to open" prompt style */}
+        <AnimatePresence>
+          {!isOpen && (
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              onClick={() => setIsOpen(true)}
+              className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-medium tracking-wide transition-all hover:bg-white/20 shadow-xl"
+            >
+              Press to open the dock
+            </motion.button>
           )}
-        >
-          {isOpen ? "Close" : "Open Menu"}
-        </motion.button>
+        </AnimatePresence>
 
-        {/* Dock Menu */}
+        {/* The Dock Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ scale: 0.8, opacity: 0, y: 20 }}
+              initial={{ scale: 0.8, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.8, opacity: 0, y: 20 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              className="flex items-center gap-2 p-2 rounded-3xl bg-zinc-900/80 backdrop-blur-md border border-zinc-800 shadow-2xl"
+              exit={{ scale: 0.8, opacity: 0, y: 50 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+              className="flex items-center gap-2 p-2 rounded-3xl bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl"
             >
               {NAV_ITEMS.map((item) => (
                 <Link 
                   key={item.id} 
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="group relative p-3 rounded-2xl text-zinc-400 hover:text-white transition-colors duration-200 hover:bg-zinc-800"
+                  className="group relative p-3 rounded-2xl text-zinc-400 hover:text-white transition-all duration-200 hover:bg-white/10"
                 >
                   <item.icon className="w-5 h-5" />
                   
                   {/* Tooltip */}
-                  <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 rounded bg-zinc-800 text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                  <span className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-white text-black text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-lg">
                     {item.label}
                   </span>
                 </Link>
               ))}
               
-              <div className="w-px h-6 bg-zinc-800 mx-1" />
+              <div className="w-px h-6 bg-white/10 mx-1" />
               
               <button 
                 onClick={() => setIsOpen(false)}
-                className="p-3 rounded-2xl text-zinc-400 hover:text-white transition-colors duration-200 hover:bg-zinc-800"
+                className="p-3 rounded-2xl text-zinc-400 hover:text-white transition-all duration-200 hover:bg-white/10"
               >
                 <span className="text-xs font-bold">✕</span>
               </button>
